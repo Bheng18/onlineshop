@@ -1,0 +1,54 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    title= title
+
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous")
+     
+
+  body
+    main#cardoVue(role="main" class="container")
+      section
+        table.table
+          th 
+          h1#pageTitle Bilihan Store
+      //- form#addNoteForm(action="/" method="POST")
+      div(class="container-fluid")
+        section 
+          table.table#productsList
+            thead(class="thead-dark")
+              tr
+                th(scope="col-md-4") Product
+                th(scope="col-md-4") Price 
+                th(scope="col-md-4")  Add To Cart
+              tr(v-for="item in items")
+                td {{ item.productName }}
+                td &#8369; {{ item.price }}  
+                td
+                  button.btn-success(v-on:click.once = "addTocart(item)" type="submit") Add to Cart            
+          
+            div(class="container-fluid")
+              
+              table.table#productsList    
+                tr
+                  th(scope="col-md-4") 
+                  th(scope="col-md-4") 
+                  th(scope="col-md-4") 
+                tr(v-for="item in cart")
+                  td {{ item.productName }}    
+                  td {{ item.price }}
+                  td 
+                    input(type="number" v-model="qty" placeholder="Enter Quantity")
+                  td
+                    button.btn-success(v-on:click = "checkout(item)" type="submit") Checkout     
+              
+            
+                       
+    script(src="/axios.min.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js")
+    script(src="/cardo-vue.js")
+    
+

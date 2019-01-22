@@ -1,0 +1,33 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    title= title
+
+    link(rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous")
+
+  body
+    main#cardoVue(role="main" class="container")
+      center 
+         h1#pageTitle Add Produt
+      form#addNoteForm(action="/" method="POST")
+        .form-group
+          label Product Name
+          input.form-control#title(type="text" 
+            name="productName" v-model="productName") 
+        .form-group
+          label Quantity
+          input(type="number" ).form-control#description(name="quantity" v-model="quantity")
+        .form-group
+          label Price
+          input(type="number" ).form-control#description(name="price" v-model="price")
+        .form-group
+          button.btn.btn-success(type="button" v-on:click="addNote") Add Product
+          button.btn#clearBtn(type="button" v-on:click="clear") Clear
+          button.btn.btn-primary(type="button" v-on:click="goBack") Back
+          
+    script(src="/axios.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js")
+    script(src="/cardo-vue.js")
